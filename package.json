@@ -12,6 +12,7 @@
   "dependencies": {
     "astro": "^5.1.5",
     "micromodal": "^0.4.10",
+    "ress": "^5.0.2",
     "sass": "^1.83.1"
   }
 }

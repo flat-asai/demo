@@ -1,0 +1,1 @@
+import{d as n}from"./debounce.D39YUwvu.js";const t=()=>{const e=window.innerWidth*.01;document.documentElement.style.setProperty("--vw",`${e}px`),console.log(e)},o=()=>{t();const e=n(100,t);window.addEventListener("resize",e)};o();
