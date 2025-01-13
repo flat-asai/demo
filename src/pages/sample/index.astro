@@ -1,0 +1,223 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout>
+  <div class="container">
+    <!-- <header class="header">
+      <h1 class="header-title">Demo</h1>
+      <button type="button" data-micromodal-trigger="g-nav" class="g-nav-btn">
+        <span class="g-nav-btn-bar"></span>
+        <span class="g-nav-btn-text">Menu</span>
+      </button>
+
+      <div id="g-nav" aria-hidden="true" class="modal">
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="modal-title"
+          class="modal-contents"
+        >
+          <header>
+            <button aria-label="Close modal" data-micromodal-close>close</button
+            >
+          </header>
+          <div id="modal-content" class="modal-content">
+            <nav class="nav">
+              <ul class="nav-list">
+                <li class="nav-item"><a href="" class="nav-link">link</a></li>
+                <li class="nav-item"><a href="" class="nav-link">link</a></li>
+                <li class="nav-item"><a href="" class="nav-link">link</a></li>
+              </ul>
+            </nav>
+
+            <ul class="sns-list">
+              <li class="sns-item"><a href="" class="sns-link">X</a></li>
+              <li class="sns-item">
+                <a href="" class="sns-link">Instagram</a>
+              </li>
+              <li class="sns-item"><a href="" class="sns-link">Facebook</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header> -->
+    <!-- NOTE* メインビジュアル -->
+
+    <main>
+      <div class="mv">
+        <div class="mv-inner">
+          <p class="mv-title">Hello World</p>
+        </div>
+        <div class="mv-bg">
+          <picture>
+            <source
+              srcset="https://picsum.photos/id/213/750/1200"
+              media="(max-width: 768px)"
+            />
+            <img src="https://picsum.photos/id/213/1200/700" alt="" />
+          </picture>
+        </div>
+      </div>
+
+      <section class="section">
+        <div class="section-inner">
+          <h2 class="section-title">About</h2>
+          <p>これはDemoサイトです</p>
+          <p>これはDemoサイトです</p>
+          <p>これはDemoサイトです</p>
+        </div>
+      </section>
+    </main>
+  </div>
+</Layout>
+
+<style lang="scss">
+  .mv {
+    position: relative;
+    height: 100vh; /* フォールバック */
+    height: 100dvh;
+  }
+
+  .mv-inner {
+    position: relative;
+    display: grid;
+    place-items: center;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .mv-title {
+    font-size: 40px;
+    font-weight: bold;
+    color: #fff;
+  }
+
+  .mv-bg {
+    position: absolute;
+    inset: 0;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  // .header {
+  //   position: fixed;
+  //   top: 0;
+  //   left: 0;
+  //   width: 100%;
+  //   z-index: 100;
+
+  //   height: 40px;
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: space-between;
+  //   padding: 0 20px;
+  // }
+
+  /* NOTE* モーダル */
+
+  // .modal {
+  //   display: none;
+
+  //   &.is-open {
+  //     display: block;
+  //   }
+  // }
+
+  // .g-nav-btn {
+  //   display: grid;
+  //   row-gap: 6px;
+  //   width: 40px;
+  //   height: 40px;
+  //   position: relative;
+  // }
+
+  // .g-nav-btn-bar {
+  //   display: block;
+  //   height: 10px;
+  //   position: relative;
+  //   &::before,
+  //   &::after {
+  //     content: "";
+  //     display: block;
+  //     width: 100%;
+  //     height: 2px;
+  //     background-color: #000;
+  //     position: absolute;
+  //     left: 0;
+  //     right: 0;
+  //   }
+
+  //   &::before {
+  //     top: 0;
+  //   }
+  //   &::after {
+  //     bottom: 0;
+  //   }
+  // }
+
+  // .g-nav-btn-text {
+  //   font-size: 12px;
+  //   font-weight: bold;
+  //   text-transform: uppercase;
+  // }
+
+  // .modal-contents {
+  //   // position: fixed;
+  //   // inset: 0;
+  //   font-size: 14px;
+  //   height: 100svh;
+  //   background-color: #2d9596;
+  //   z-index: 1000;
+  //   padding: 20px;
+  // }
+
+  // .modal-content {
+  //   display: flex;
+  //   flex-direction: column;
+  //   justify-content: space-between;
+  //   height: 100%;
+  // }
+
+  // .nav-list {
+  //   display: flex;
+  //   flex-direction: column;
+  //   gap: 10px;
+  //   list-style: none;
+  // }
+
+  // .nav-link {
+  //   display: block;
+  //   font-size: 14px;
+  //   font-weight: bold;
+  //   padding: 10px;
+  //   border-radius: 4px;
+  //   background-color: #fff;
+  //   text-decoration: none;
+  // }
+
+  // .sns-list {
+  //   display: flex;
+  //   gap: 10px;
+  //   list-style: none;
+  // }
+</style>
+
+<script>
+  import MicroModal from "micromodal";
+
+  MicroModal.init({
+    disableScroll: true,
+  });
+</script>

@@ -1,0 +1,17 @@
+{
+  "name": "demo",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "devh": "astro dev --host",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^5.1.5",
+    "micromodal": "^0.4.10",
+    "sass": "^1.83.1"
+  }
+}
