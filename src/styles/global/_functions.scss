@@ -1,0 +1,98 @@
+@charset "utf-8";
+
+@use 'variables';
+@use 'sass:map';
+
+/// カラーコードを取得
+/// @param {string} $color variablesを参照
+/// @return {string} カラーコード
+///
+@function get_color($color) {
+  @return map.get(variables.$colors, $color);
+}
+
+/// font-sizeを取得
+/// @param {string} $size text_xs | text_sm | text_md | text_lg | heading_xs | heading_sm | heading_md | heading_lg | heading_xl
+/// @return {number}
+///
+@function get_font_size($size) {
+  @return map.get(variables.$font_sizes, $size);
+}
+
+/// font-weightを取得
+/// @param {string} $size light | regular | medium | semibold | bold
+/// @return {number}
+///
+@function get_font_weight($size) {
+  @return map.get(variables.$font_weight_sizes, $size);
+}
+
+/// コンテンツ幅を取得
+/// @param {string} $size sm | md | lg
+/// @return {string} px
+///
+@function get_content_width($size) {
+  @return map.get(variables.$content_widths, $size);
+}
+
+/// コンテンツ余白を取得
+/// @param {string} $size sm | md | lg
+/// @return {string} px
+///
+@function get_content_padding($size) {
+  @return map.get(variables.$content_paddings, $size);
+}
+
+/// カスタムイージングを取得
+/// @param {string} $ease out_quint | out_cubic | in_out_quart
+/// @return {string}
+///
+@function get_easing($ease) {
+  @return map.get(variables.$easing, $ease);
+}
+
+/// z-indexを取得
+/// @param {string} $layer
+/// @return {number}
+///
+@function get_layer($layer) {
+  @return map.get(variables.$layers, $layer);
+}
+
+/// clampの推奨値を計算する
+@function get_clamp_value($minBp, $maxBp, $minVal, $maxVal) {
+  $a: calc(100 * ($maxVal - $minVal) / ($maxBp - $minBp));
+  $b: calc($minVal - ($minBp / 100) * $a);
+  $vw: calc(#{$a}vw + #{$b}px);
+
+  @return clamp(#{$minVal}px, #{$vw}, #{$maxVal}px);
+}
+
+// コンテンツ幅からの相対値
+
+@function per-sp($pixel, $width: 375) {
+  @return calc(#{math.div($pixel, 2)} / $width * 100%);
+}
+
+@function per-pc($pixel, $width: 1200) {
+  @return calc($pixel / $width * 100%);
+}
+
+// SPデザインカンプ計算用 $unitには単位が入ります
+@function sp($pixel, $unit: '') {
+  @return #{math.div($pixel, 2)}#{$unit};
+}
+
+// ブラウザ幅からの相対値
+
+@function vw-sp($pixel) {
+  @return calc($pixel / 375 * 100vw);
+}
+
+@function vw-tab($pixel) {
+  @return calc($pixel / 1023 * 100vw);
+}
+
+@function vw-pc($pixel) {
+  @return calc($pixel / 1280 * 100vw);
+}

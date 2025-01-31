@@ -1,0 +1,302 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Scroll from "@/components/Scroll.astro";
+---
+
+<Layout>
+  <div class="container">
+    <div class="mv">
+      <div class="mvInner">
+        <div class="mvTitle">
+          <h1 class="mvHeading">
+            <span class="mvHeadingPrefix">Section</span>
+            <span class="mvHeadingMain">100svhの高さ</span>
+          </h1>
+
+          <div class="scroll">
+            <Scroll />
+          </div>
+        </div>
+      </div>
+      <div class="mvBackground">
+        <picture>
+          <source
+            srcset="https://placehold.jp/750x1200.png"
+            type="image/png"
+            media="(max-width: 768px)"
+          />
+          <img
+            src="https://placehold.jp/1200x630.png"
+            alt=""
+            width="1200"
+            height="630"
+          />
+        </picture>
+      </div>
+    </div>
+    <main class="main">
+      <section class="section">
+        <div class="sectionInner">
+          <div class="sectionTitle">
+            <h2 class="heading">見出しが入ります</h2>
+          </div>
+          <div class="sectionContent">
+            <p>
+              この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、
+            </p>
+            <p>
+              この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、
+            </p>
+            <p>
+              この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section _100svh">
+        <div class="sectionInner">
+          <div class="sectionTitle">
+            <h2 class="heading">100svhのセクション</h2>
+          </div>
+          <div class="sectionContent">
+            <p>このセクションの高さは100svhです。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="sectionInner">
+          <div class="sectionTitle">
+            <h2 class="heading">見出しが入ります</h2>
+          </div>
+          <div class="sectionContent">
+            <p>
+              この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、
+            </p>
+            <p>
+              この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、
+            </p>
+            <p>
+              この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、
+            </p>
+          </div>
+        </div>
+      </section>
+
+            <section class="section _100svh">
+        <div class="sectionInner">
+          <div class="sectionTitle">
+            <h2 class="heading">100svhのセクション</h2>
+          </div>
+          <div class="sectionContent">
+            <p>このセクションの高さは100svhです。</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <style lang="scss">
+    @charset "utf-8";
+    @use "@/styles/global" as *;
+
+    .container {
+      height: 100%;
+    }
+
+    /* mainVisual */
+
+    .mv {
+      position: relative;
+      height: 100vh;
+      height: 100svh;
+    }
+
+    .mvInner {
+      position: relative;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .mvTitle {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      height: 100%;
+    }
+
+    .mvHeading {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .mvHeadingPrefix {
+      @include font-size(16);
+      @include font-weight(bold);
+    }
+
+    .mvHeadingMain {
+      @include font-size(24);
+      @include font-weight(bold);
+      @include mq(md) {
+        @include font-size(40);
+      }
+    }
+
+    .mvBackground {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+
+      &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-color: rgb(38 47 95 / 0.5);
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .scroll {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* セクション */
+
+    .section {
+      padding-block: 80px;
+
+      &._100svh {
+        position: relative;
+        height: 100svh;
+        background-color: get_color(bg_secondary);
+
+        &::before,
+        &::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          right: 0;
+          height: 10px;
+          background-color: get_color(primary);
+          color: #fff;
+        }
+
+        &::before {
+          top: 0;
+        }
+
+        &::after {
+          bottom: 0;
+        }
+      }
+
+      &._100dvh {
+        position: relative;
+        height: 100dvh;
+        background-color: get_color(bg_secondary);
+
+        &::before,
+        &::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          right: 0;
+          height: 10px;
+          background-color: get_color(primary);
+          color: #fff;
+        }
+
+        &::before {
+          top: 0;
+        }
+
+        &::after {
+          bottom: 0;
+        }
+      }
+
+      &._100lvh {
+        position: relative;
+        height: 100lvh;
+        background-color: get_color(bg_secondary);
+
+        &::before,
+        &::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          right: 0;
+          height: 10px;
+          background-color: get_color(primary);
+          color: #fff;
+        }
+
+        &::before {
+          top: 0;
+        }
+
+        &::after {
+          bottom: 0;
+        }
+      }
+    }
+
+    .sectionInner {
+      max-width: 750px;
+      padding-inline: 24px;
+      margin-inline: auto;
+      position: relative;
+    }
+
+    .sectionTitle {
+      padding-bottom: 24px;
+    }
+
+    .heading {
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .sectionContent {
+      text-align: justify;
+
+      p + p {
+        margin-top: 28px;
+      }
+    }
+  </style>
+
+  <script>
+    import { debounce } from "../../../scripts/debounce.js";
+
+    const updateCssViewportUnits = () => {
+      /* clientWidth でブラウザの横幅を取得し、1vw の値を計算する */
+      const vw = document.documentElement.clientWidth * 0.01;
+
+      /* 計算した値を CSS 変数 --vw に設定する */
+      document.documentElement.style.setProperty("--vw", `${vw}px`);
+    };
+
+    const setCssViewportUnits = () => {
+      updateCssViewportUnits();
+      const debouncedResize = debounce(100, updateCssViewportUnits);
+      window.addEventListener("resize", debouncedResize);
+    };
+
+    setCssViewportUnits();
+  </script>
+</Layout>

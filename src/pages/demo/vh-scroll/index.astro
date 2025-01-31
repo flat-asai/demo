@@ -1,0 +1,133 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import clsx from "clsx";
+
+const vhList = [
+  { value: "vh" },
+  { value: "svh" },
+  { value: "lvh" },
+  { value: "dvh" },
+  { value: "var" },
+];
+---
+
+<Layout>
+  <div class="container">
+    <p class="scroll">↓ Scroll ↓</p>
+
+    <div class="vhList">
+      {
+        vhList.map((vh) => (
+          <p class={clsx("vhItem", `_${vh.value}`)}>100{vh.value}</p>
+        ))
+      }
+      <!-- <p class={clsx(styles.vhItem, styles._var)}>--vh</p> -->
+    </div>
+
+    <div class="content"></div>
+  </div>
+</Layout>
+
+<style lang="scss">
+  @charset "utf-8";
+  @use "@/styles/global" as *;
+
+  @charset "utf-8";
+
+  .content {
+    height: 400vh;
+    width: 100vw;
+  }
+
+  .scroll {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    font-size: 16px;
+    z-index: 100;
+    text-transform: uppercase;
+  }
+
+  .vhList {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    justify-content: center;
+    max-width: 500px;
+    margin: 0 auto;
+    padding-inline: 24px;
+  }
+
+  .vhItem {
+    position: relative;
+    font-size: 12px;
+    text-align: center;
+    padding-top: 20px;
+    background-color: get_color(bg_secondary);
+
+    @include font-weight(bold);
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 10px;
+      background-color: get_color(primary);
+      color: #fff;
+    }
+
+    &::before {
+      top: 0;
+    }
+
+    &::after {
+      bottom: 0;
+    }
+
+    &._vh {
+      height: 100vh;
+    }
+
+    &._svh {
+      height: 100svh;
+    }
+
+    &._lvh {
+      height: 100lvh;
+    }
+
+    &._dvh {
+      height: 100dvh;
+    }
+
+    &._var {
+      height: calc(var(--vh) * 100); /* JSで設定した値を使用する */
+    }
+  }
+</style>
+
+<script>
+  import { debounce } from "../../../scripts/debounce.js";
+
+  const updateCssViewportUnits = () => {
+    const vh = document.documentElement.clientHeight * 0.01;
+
+    document.documentElement.style.setProperty("--vh", `${vh}px`);
+  };
+
+  const setCssViewportUnits = () => {
+    updateCssViewportUnits();
+    const debouncedResize = debounce(100, updateCssViewportUnits);
+    window.addEventListener("resize", debouncedResize);
+  };
+
+  setCssViewportUnits();
+</script>

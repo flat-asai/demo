@@ -1,13 +1,129 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from "@/layouts/Layout.astro";
+import LinkButton from "@/components/LinkButton.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const linkList_1 = [
+  {
+    title: "vw - サンプル",
+    href: "/demo/vw/",
+  },
+  {
+    title: "vh - サンプル",
+    href: "/demo/vh/",
+  },
+];
+
+const linkList_2 = [
+  {
+    title: "vw - 横スクロール問題",
+    href: "/demo/prob-vw-1/",
+  },
+  {
+    title: "vw - 横スクロール問題（JS）",
+    href: "/demo/prob-vw-2/",
+  },
+];
+
+const linkList_3 = [
+  {
+    title: "lvh",
+    href: "/demo/prob-lvh/",
+  },
+  {
+    title: "svh",
+    href: "/demo/prob-svh/",
+  },
+  {
+    title: "dvh",
+    href: "/demo/prob-dvh/",
+  },
+];
 ---
 
 <Layout>
-	<a href="/sample/vh/">vh</a>
-	<a href="/sample/vw/">vw</a>
-	<a href="/sample/sample/">サンプル</a>
+  <div class="container">
+    <div>
+      <h1>Demo</h1>
+    </div>
+    <nav class="nav">
+      <h2 class="sr-only">リンク集</h2>
+      <section class="navSection">
+        <h3 class="navTitle">vw/vhとは</h3>
+        <ul class="list">
+          {
+            linkList_1.map((link) => (
+              <li class="listItem">
+                <LinkButton href={link.href} title={link.title} />
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <section class="navSection">
+        <h3 class="navTitle">横スクロール問題</h3>
+        <ul class="list">
+          {
+            linkList_2.map((link) => (
+              <li class="listItem">
+                <LinkButton href={link.href} title={link.title} />
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <section class="navSection">
+        <h3 class="navTitle">高さ問題</h3>
+        <ul class="list">
+          {
+            linkList_3.map((link) => (
+              <li class="listItem">
+                <LinkButton href={link.href} title={link.title} />
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+    </nav>
+  </div>
 </Layout>
+
+<style lang="scss">
+  @charset "utf-8";
+  @use "@/styles/global" as *;
+
+  .container {
+    max-width: 750px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-inline: 20px;
+    margin-inline: auto;
+    height: 100vh;
+  }
+
+  .navSection {
+    & + & {
+      margin-top: 24px;
+    }
+  }
+
+  .navTitle {
+    @include font-size(16);
+    @include font-weight(bold);
+    margin-bottom: 8px;
+  }
+
+  .list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    list-style: none;
+  }
+
+  .listItem {
+    text-align: center;
+  }
+</style>

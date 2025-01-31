@@ -1,0 +1,93 @@
+@charset "utf-8";
+@use 'sass:math';
+@use "sass:meta";
+@use "sass:map";
+@use 'variables';
+@use 'functions';
+
+@mixin font_primary {
+  font-family:
+      "Roboto",
+      "游ゴシック",
+      yugothic,
+      "ヒラギノ角ゴpron w3",
+      hiragino kaku gothic pron,
+      "メイリオ",
+      meiryo,
+      sans-serif;
+}
+
+@mixin font_size($size, $base: 16) {
+  font-size: $size + px;
+  font-size: math.div($size, $base) + rem;
+}
+
+@mixin line_height($line, $fz) {
+  @if (type-of($line)==number) {
+    line-height: math.div($line, $fz);
+  }
+}
+
+@mixin font_weight($size) {
+  font-weight: functions.get_font_weight($size);
+}
+
+@mixin mq($size, $width: min) {
+  $result: 0;
+
+  @if (meta.type-of($size)==number) {
+    $result: $size;
+  }
+
+  @else {
+
+    @each $key,
+    $value in variables.$breakpoints {
+      @if ($key==$size) {
+        $result: $value;
+      }
+    }
+  }
+
+  @if ($width==max) {
+    @media not all and (min-width: #{$result}) {
+      @content;
+    }
+  }
+
+  @else {
+    @media (min-width: #{$result}) {
+      @content;
+    }
+  }
+}
+
+@mixin create_container($content_width: md) {
+  width: 100%;
+  padding-right: 24px;
+  padding-left: 24px;
+  margin-inline: auto;
+  max-width: 740px;
+}
+
+@mixin hover {
+  @media (any-hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+@mixin any-hover {
+  @media (any-hover: hover) {
+    @content;
+  }
+}
+
+@mixin hover_opacity($opacity: 0.7, $duration: 0.3s) {
+  transition: opacity $duration functions.get_easing(out_quint);
+
+  @include hover {
+    opacity: $opacity;
+  }
+}

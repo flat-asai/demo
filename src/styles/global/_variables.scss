@@ -1,0 +1,61 @@
+@charset "utf-8";
+@use "sass:map";
+
+$breakpoints: (sm: 640px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1200px,
+  xxl: 1366px,
+);
+
+$content_widths: (xs: 500,
+  sm: 840,
+  md: 1060,
+  lg: 1280,
+);
+
+$content_paddings: (sm: 24px,
+  md: 40px,
+  lg: 80px,
+);
+
+$font_weight_sizes: (light: 300,
+  regular: 400,
+  medium: 500,
+  semibold: 600,
+  bold: 700,
+);
+
+$color_palette: (black: #3C3C3C,
+  white: #fff,
+  gray: #f0f3f5,
+  green: #262F5F,
+  green_light: #D8E4F5,
+  pink:#FFA9EE,
+);
+
+$colors: (black: map.get($color_palette, black),
+  white: map.get($color_palette, white),
+  gray: map.get($color_palette, gray),
+  primary: map.get($color_palette, green),
+  secondary: map.get($color_palette, pink),
+
+  text: map.get($color_palette, black),
+  text_inverse: map.get($color_palette, white),
+  bg_primary: map.get($color_palette, gray),
+  bg_secondary: map.get($color_palette, green_light),
+);
+
+$easing: (out_quint: cubic-bezier(0.22, 1, 0.36, 1),
+  out_cubic: cubic-bezier(0.33, 1, 0.68, 1),
+  in_out_quart: cubic-bezier(0.76, 0, 0.24, 1),
+);
+
+$layers: (header: 21,
+  audioPlayer: 20,
+);
+
+
+
+
+$button_shadow: #091F41 · 20%

@@ -1,0 +1,220 @@
+@charset "utf-8";
+
+@use '../global'as *;
+
+* {
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  scroll-margin-top: 80px;
+}
+
+html {
+  scroll-behavior: smooth;
+
+  &.is-no-smooth {
+    scroll-behavior: auto;
+  }
+}
+
+:root {
+  min-height: 100vh;
+  line-break: strict;
+}
+
+:root,
+body {
+  min-height: 100%;
+}
+
+body {
+  color: get_color(text);
+  overflow-wrap: break-word;
+  font-feature-settings: 'palt'on;
+
+  @include font_primary;
+  @include font_weight(medium);
+  @include font_size(16);
+}
+
+[lang="en"] {
+  * {
+    letter-spacing: 0;
+  }
+}
+
+ruby {
+  rt {
+    @include font_size(7.5);
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+    margin-bottom: 0.25em;
+    letter-spacing: 0;
+  }
+}
+
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+p,
+span,
+em,
+small,
+strong,
+sub,
+sup,
+mark,
+del,
+ins,
+strike,
+abbr,
+dfn,
+blockquote,
+q,
+cite,
+code,
+pre,
+ol,
+ul,
+li,
+dl,
+dt,
+dd,
+div,
+section,
+article,
+main,
+aside,
+nav,
+header,
+hgroup,
+footer,
+img,
+figure,
+figcaption,
+address,
+time,
+audio,
+video,
+canvas,
+iframe,
+details,
+summary,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  border: 0;
+}
+
+a {
+  -webkit-touch-callout: none;
+  color: inherit;
+
+  &:hover {
+    @include mq(md) {
+      text-decoration: none;
+    }
+  }
+
+  &[href^='tel:'] {
+    @include hover {
+      pointer-events: none;
+    }
+  }
+}
+
+article,
+aside,
+footer,
+header,
+nav,
+section,
+main {
+  display: block;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+img,
+video {
+  max-width: 100%;
+}
+
+img {
+  vertical-align: top;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote::after,
+blockquote::before,
+q::after,
+q::before {
+  content: none;
+}
+
+[disabled] {
+  cursor: not-allowed;
+}
+
+/* form */
+
+input[type='text'],
+input[type='tel'],
+input[type='number'],
+input[type='date'],
+input[type='time'],
+input[type='password'],
+input[type='email'],
+textarea {
+  appearance: none;
+  -webkit-tap-highlight-color: rgba(0 0 0 / 0%);
+}
+
+textarea {
+  display: block;
+}
+
+fieldset {
+  margin: 0;
+  border: none;
+}
+
+legend {
+  display: none;
+}
+
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline-width: 1px !important;
+}

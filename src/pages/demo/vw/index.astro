@@ -1,0 +1,93 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import clsx from "clsx";
+
+const vwList = [
+  { value: "vw" },
+  { value: "svw" },
+  { value: "lvw" },
+  { value: "dvw" },
+];
+---
+
+<Layout>
+  <div class="container">
+    <div class="vwList">
+      {
+        vwList.map((vw) => (
+          <p class={clsx("vwItem", `_${vw.value}`)}>100{vw.value}</p>
+        ))
+      }
+    </div>
+    <div class="content"></div>
+  </div>
+</Layout>
+
+<style lang="scss">
+  @charset "utf-8";
+  @use "@/styles/global" as *;
+
+  @charset "utf-8";
+
+  .container {
+    height: 100%;
+    height: 100dvh;
+    container-type: inline-size;
+  }
+
+  .vwList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .vwItem {
+    position: relative;
+    padding: 20px;
+    font-size: 12px;
+    text-align: center;
+    background-color: get_color(bg_secondary);
+
+    @include font-weight(bold);
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 10px;
+      background-color: get_color(primary);
+      color: #fff;
+    }
+
+    &::before {
+      left: 0;
+    }
+
+    &::after {
+      right: 0;
+    }
+
+    /* variation */
+
+    &._vw {
+      width: 100vw;
+    }
+
+    &._svw {
+      width: 100svw;
+    }
+
+    &._lvw {
+      width: 100lvw;
+    }
+
+    &._dvw {
+      width: 100dvw;
+    }
+  }
+</style>

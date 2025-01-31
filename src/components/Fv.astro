@@ -1,0 +1,60 @@
+---
+const { title, subTitle } = Astro.props;
+---
+
+<div class="fv">
+  <h1 class="inner">
+    <span class="prefix"> Section </span>
+    <span class="title">
+      {title}
+      {subTitle && <span class="subTitle">{subTitle}</span>}
+    </span>
+  </h1>
+</div>
+
+<style lang="scss">
+  @charset "utf-8";
+  @use "@/styles/global" as *;
+
+  .fv {
+    background-color: get_color(bg_secondary);
+  }
+
+  .prefix {
+    @include font_size(16);
+
+    color: get_color(primary);
+    display: block;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .inner {
+    padding-block: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include font_size(24);
+    @include font_weight(bold);
+
+    @include mq(md) {
+      @include font_size(40);
+    }
+  }
+
+  .subTitle {
+    @include font_size(16);
+    margin-top: 8px;
+
+    @include mq(md) {
+      @include font_size(24);
+    }
+  }
+</style>

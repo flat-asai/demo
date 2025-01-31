@@ -1,0 +1,131 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Fv from "@/components/Fv.astro";
+---
+
+<Layout>
+  <div class="container">
+    <Fv title="横スクロール出現問題" subTitle="テスト" />
+    <div class="inner">
+      <section class="section">
+        <div class="sectionTitle">
+          <h2 class="heading">見出しが入ります</h2>
+        </div>
+        <div class="sectionContent">
+          <p>
+            この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、
+          </p>
+          <p>
+            この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、
+          </p>
+          <p>
+            この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、
+          </p>
+        </div>
+      </section>
+
+      <section class="section _gray">
+        <div class="sectionTitle">
+          <h2 class="heading">
+            このセクションは、vwを使用して背景色を広げています
+          </h2>
+        </div>
+        <div class="sectionContent">
+          <p>
+            この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、
+          </p>
+          <p>
+            この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、
+          </p>
+          <p>
+            この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="sectionTitle">
+          <h2 class="heading">見出しが入ります</h2>
+        </div>
+        <div class="sectionContent">
+          <p>
+            この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、
+          </p>
+          <p>
+            この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、
+          </p>
+          <p>
+            この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、
+          </p>
+        </div>
+      </section>
+    </div>
+  </div>
+</Layout>
+
+<style lang="scss">
+  @charset "utf-8";
+  @use "@/styles/global" as *;
+
+  .container {
+    height: 100%;
+  }
+
+  .inner {
+    max-width: 750px;
+    padding-inline: 24px;
+    margin-inline: auto;
+    position: relative;
+  }
+
+  /* セクション */
+
+  .section {
+    padding-block: 80px;
+
+    &._gray {
+      position: relative;
+      background-color: get_color(bg_secondary);
+
+      width: 100vw;
+      margin-inline: calc(50% - 50vw);
+      padding-inline: calc((100vw - 100%) / 2);
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 10px;
+        background-color: get_color(primary);
+        color: #fff;
+      }
+
+      &::before {
+        left: 0;
+      }
+
+      &::after {
+        right: 0;
+      }
+    }
+  }
+
+  .sectionTitle {
+    padding-bottom: 24px;
+  }
+
+  .heading {
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .sectionContent {
+    text-align: justify;
+
+    p + p {
+      margin-top: 28px;
+    }
+  }
+</style>
